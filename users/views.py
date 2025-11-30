@@ -89,16 +89,24 @@ class HabitRetrieveAPIView(RetrieveAPIView):
     permission_classes = (IsOwnerOrPublic,)
 
 
-class HabitListAPIView(ListAPIView):
-    """Получение списка привычек"""
+class HabitOwnListAPIView(ListAPIView):
+    """Получение списка собственных привычек пользователя"""
 
-    queryset = Habit.objects.all()
     serializer_class = HabitSerializer
 
     def get_queryset(self):
-        """Метод получения доступных для просмотра привычек"""
+        """Метод получения собственных привычек пользователя"""
 
         user = self.request.user
-        user_own_habits = Habit.objects.filter(owner=user)
-        public_habits = Habit.objects.filter(is_public=True)
-        return user_own_habits.union(public_habits)
+        return Habit.objects.filter(owner=user)
+
+
+class HabitPublicListAPIView(ListAPIView):
+    """Получение списка публичных привычек"""
+
+    serializer_class = HabitSerializer
+
+    def get_queryset(self):
+        """Метод получения публичных привычек"""
+
+        return Habit.objects.filter(is_public=True)
