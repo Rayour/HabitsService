@@ -27,6 +27,10 @@ black = "^25.11.0"
 isort = "^7.0.0"
 flake8 = "^7.3.0"
 
+
+[tool.poetry.group.dev.dependencies]
+coverage = "^7.12.0"
+
 [tool.black]
 line-length = 119
 exclude = '''

@@ -3,7 +3,7 @@ from rest_framework.permissions import AllowAny
 
 from users.models import CustomUser, Habit
 from users.paginators import HabitCoursesPaginator
-from users.permissions import IsOwner, IsOwnerOrPublic
+from users.permissions import IsOwner, IsOwnerOrPublic, IsSelf
 from users.serializers import CustomUserSerializer, HabitSerializer
 
 
@@ -27,7 +27,7 @@ class CustomUserUpdateAPIView(UpdateAPIView):
 
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
-    permission_classes = (IsOwner,)
+    permission_classes = (IsSelf,)
 
 
 class CustomUserDestroyAPIView(DestroyAPIView):
@@ -35,7 +35,7 @@ class CustomUserDestroyAPIView(DestroyAPIView):
 
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
-    permission_classes = (IsOwner,)
+    permission_classes = (IsSelf,)
 
 
 class CustomUserRetrieveAPIView(RetrieveAPIView):
@@ -43,7 +43,7 @@ class CustomUserRetrieveAPIView(RetrieveAPIView):
 
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
-    permission_classes = (IsOwner,)
+    permission_classes = (IsSelf,)
 
 
 class CustomUserListAPIView(ListAPIView):

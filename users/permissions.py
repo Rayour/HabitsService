@@ -10,6 +10,15 @@ class IsOwner(permissions.BasePermission):
         return obj.owner == request.user
 
 
+class IsSelf(permissions.BasePermission):
+    """Класс доступов для пользователя к самому себе"""
+
+    def has_object_permission(self, request, view, obj):
+        """Метод проверки принадлежности записи пользователю"""
+
+        return obj == request.user
+
+
 class IsOwnerOrPublic(permissions.BasePermission):
     """Класс доступов для владельцев или по наличию флага публичности"""
 
