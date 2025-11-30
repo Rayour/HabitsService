@@ -48,7 +48,7 @@ class Habit(models.Model):
         related_name="habits",
     )
     place = models.CharField(max_length=250, verbose_name="Место выполнения привычки")
-    time = models.DateTimeField(verbose_name="Время, когда необходимо выполнять привычку", blank=True, null=True)
+    time = models.TimeField(verbose_name="Время, когда необходимо выполнять привычку", blank=True, null=True)
     action = models.CharField(max_length=500, verbose_name="Действие, которое представляет собой привычка")
     is_enjoyable = models.BooleanField(verbose_name="Привычка приятная?", blank=True, null=True)
     related_habit = models.ForeignKey(
@@ -61,6 +61,17 @@ class Habit(models.Model):
         related_name="related_habits",
     )
     period_in_days = models.PositiveSmallIntegerField(verbose_name="Периодичность привычки в днях", default=1)
-    reward = models.CharField(max_length=500, verbose_name="Действие, которое является вознаграждением")
+    reward = models.CharField(
+        max_length=500, verbose_name="Действие, которое является вознаграждением", blank=True, null=True
+    )
     duration = models.PositiveSmallIntegerField(verbose_name="Продолжительность выполнения привычки в секундах")
     is_public = models.BooleanField(verbose_name="Привычка публичная?", blank=True, null=True)
+
+    def __str__(self):
+        """Строковое представление привычки"""
+
+        return self.action
+
+    class Meta:
+        verbose_name = "привычка"
+        verbose_name_plural = "привычки"
