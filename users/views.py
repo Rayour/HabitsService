@@ -2,6 +2,7 @@ from rest_framework.generics import CreateAPIView, DestroyAPIView, ListAPIView, 
 from rest_framework.permissions import AllowAny
 
 from users.models import CustomUser, Habit
+from users.paginators import HabitCoursesPaginator
 from users.permissions import IsOwner, IsOwnerOrPublic
 from users.serializers import CustomUserSerializer, HabitSerializer
 
@@ -93,6 +94,7 @@ class HabitOwnListAPIView(ListAPIView):
     """Получение списка собственных привычек пользователя"""
 
     serializer_class = HabitSerializer
+    pagination_class = HabitCoursesPaginator
 
     def get_queryset(self):
         """Метод получения собственных привычек пользователя"""
@@ -105,6 +107,7 @@ class HabitPublicListAPIView(ListAPIView):
     """Получение списка публичных привычек"""
 
     serializer_class = HabitSerializer
+    pagination_class = HabitCoursesPaginator
 
     def get_queryset(self):
         """Метод получения публичных привычек"""
