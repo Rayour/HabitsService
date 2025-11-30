@@ -3,9 +3,19 @@ from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from users.apps import UsersConfig
-from users.views import (CustomUserCreateAPIView, CustomUserDestroyAPIView, CustomUserListAPIView,
-                         CustomUserRetrieveAPIView, CustomUserUpdateAPIView, HabitCreateAPIView, HabitDestroyAPIView,
-                         HabitOwnListAPIView, HabitPublicListAPIView, HabitRetrieveAPIView, HabitUpdateAPIView)
+from users.views import (
+    CustomUserCreateAPIView,
+    CustomUserDestroyAPIView,
+    CustomUserListAPIView,
+    CustomUserRetrieveAPIView,
+    CustomUserUpdateAPIView,
+    HabitCreateAPIView,
+    HabitDestroyAPIView,
+    HabitOwnListAPIView,
+    HabitPublicListAPIView,
+    HabitRetrieveAPIView,
+    HabitUpdateAPIView,
+)
 
 app_name = UsersConfig.name
 
