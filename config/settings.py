@@ -155,6 +155,8 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 # URL-адрес брокера сообщений
 CELERY_BROKER_URL = "redis://localhost:6379"  # Например, Redis, который по умолчанию работает на порту 6379
 
